@@ -8,7 +8,7 @@ public class EstacApp {
 		
 		Scanner teclado = new Scanner(System.in);
 		int opcao;
-		int iVaga = -1;
+		int iVaga;
 		String placa;
 		String tipo;
 		
@@ -70,7 +70,7 @@ public class EstacApp {
 						placa = teclado.nextLine();
 					
 						// adicionar o veiculo na vaga.
-						listaVagas[iVaga] = new Veiculo(tipo, placa);
+						listaVagas[iVaga-1] = new Veiculo(tipo, placa);
 					
 					break;
 				
@@ -87,9 +87,16 @@ public class EstacApp {
 						}
 					
 					} while ( iVaga < 1 || iVaga > 10 );
-					System.out.println(listaVagas[iVaga].toString());
-					// limpar a vaga
-					listaVagas[iVaga] = null;
+					
+					if (listaVagas[iVaga-1] != null) {
+						
+						System.out.println(listaVagas[iVaga-1].toString());
+						// limpar a vaga
+						listaVagas[iVaga] = null ;
+						
+					} else {
+						System.out.println("Nao existe veículo nessa vaga!");
+					}
 					break;
 					
 				case 3:
